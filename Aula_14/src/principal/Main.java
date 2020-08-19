@@ -11,7 +11,7 @@ public class Main  {
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
-		Produto a= new Produto();
+		Produto a= new Produto(null, 0, 0);
 		
 		System.out.println("Digite o nome do produto: ");
 		a.nome = sc.next();
