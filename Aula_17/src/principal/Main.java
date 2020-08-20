@@ -1,15 +1,12 @@
 package principal;
 
 import java.text.ParseException;
-//import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-//import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
-
 import agenda.Contato;
 import agenda.Endereco;
-//import entities.Funcionario;
+
 
 public class Main {
 
