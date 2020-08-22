@@ -43,6 +43,7 @@ public class Main {
 		cb.saque(saque);
 		System.out.println("Dados atualizados: ");       
 		System.out.println(cb);
+		
 		sc.close();
 	}
 }

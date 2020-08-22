@@ -3,7 +3,7 @@ package entities;
 import java.util.Date;
 
 public class Supervisor extends PessoaFisica{
-	private Double increase = 0.12;
+	private Double increase = 0.08;
 	
 	public Supervisor(){
 		super();

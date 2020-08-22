@@ -12,6 +12,11 @@ public class PessoaFisica extends Funcionario {
 	public PessoaFisica() {
 		super();
 	}
+	
+	public PessoaFisica(String cpf, Integer numberWorkCard) {
+		
+		
+	}
 
 	public PessoaFisica(String name, String email, String identificacao, String address, String sector,
 			Date admissionDate, Date resignateDate, Double baseSalary, String cpf, Integer numberWorkCard) {
@@ -38,7 +43,10 @@ public class PessoaFisica extends Funcionario {
 
 	@Override
 	public String toString() {
-		return "PessoaFisica [cpf=" + cpf + ", numberWorkCard=" + numberWorkCard + "]";
+		return "Pessoa [name=" + getName() + ", email=" + getEmail() + ", identificacao=" + getIdentificacao() + ", address=" + getAddress()
+				+ ", sector=" + getSector() + ", admissionDate=" + getAdmissionDate() + ", resignateDate=" + getResignateDate()
+				+ ", baseSalary=" + getBaseSalary() +"PessoaFisica [cpf=" + cpf + ", numberWorkCard=" + numberWorkCard +"]";
+
 	}
 	
 

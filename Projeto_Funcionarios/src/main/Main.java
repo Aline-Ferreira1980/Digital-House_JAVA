@@ -1,5 +1,6 @@
 package main;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,35 +16,24 @@ import entities.PessoaFisica;
 public class Main {
 
 	@SuppressWarnings("deprecation")
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 		Scanner sc = new Scanner(System.in);
-		List<Funcionario> lista = new ArrayList();
-		
-		String name = null, email = null, identificacao = null, address = null, sector = null, cpf= null, cnpj = null;	
-		Date admissionDate = null;
-		Date resignateDate = null;
-		Double baseSalary = 0.0;
-		Integer numberWorkCard = 0;
+		List<Funcionario> lista = new ArrayList<>();
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date data = new Date();
 		
 		
-		
-		lista.add(new Funcionario(name, email, identificacao, address, sector, admissionDate, resignateDate, baseSalary));
-		lista.add(new PessoaFisica());
-		
-		
-		SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
-		Date admissionDate1 = new Date();
-		SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
-		Date demissao = new Date();
+		String cpf = null, cnpj;
+		int numberWorkCard = 0;
 		
 		
 		System.out.println("--- Dados do funcionario ---");
 		System.out.print("Nome: ");
-		name = sc.nextLine();
+		String name = sc.nextLine();
 		System.out.print("Email: ");
-		email = sc.nextLine();
+		String email = sc.nextLine();
 		System.out.print("Identificação: ");
-		identificacao = sc.nextLine();
+		String identificacao = sc.nextLine();
 		if (identificacao.equals("Pessoa Fisica")) {
 			 System.out.print("Digite o CPF  do funcionário:");
 			 cpf= sc.nextLine();
@@ -56,15 +46,18 @@ public class Main {
 			cnpj = sc.nextLine();
 		}
 		System.out.print("Address: ");
-		address = sc.nextLine();
+		String address = sc.nextLine();
 		System.out.print("Sector: ");
-		sector = sc.nextLine();
-//		System.out.print("Data de admissão: ");
-//		admissionDate1.getDate();
-//		System.out.print("Data de demissão: ");
-//		resignateDate.getDate();
+		String sector = sc.nextLine();
+		System.out.print("Data de admissão: ");
+		Date admissionDate = sdf.parse(sc.nextLine());
+		System.out.print("Data de demissão: ");
+		Date resignateDate= sdf.parse(sc.nextLine());
 		System.out.print("Salario Base: ");
-		baseSalary = sc.nextDouble();
+		double baseSalary = sc.nextDouble();
+		
+		lista.add(new PessoaFisica(name, email, identificacao, address, sector, admissionDate, resignateDate, baseSalary,cpf, numberWorkCard));
+		
 		
 		System.out.println(lista);
 		
