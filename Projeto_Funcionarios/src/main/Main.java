@@ -20,9 +20,9 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		List<Funcionario> lista = new ArrayList<>();
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Date data = new Date();
 		
 		
+	
 		String cpf = null, cnpj;
 		int numberWorkCard = 0;
 		
