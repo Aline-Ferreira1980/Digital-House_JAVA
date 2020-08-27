@@ -4,6 +4,12 @@ public abstract class Conta {
 	private Double saldo;
 	
 	
+	public Conta(Double saldo) {
+	
+	}
+	public Conta() {
+		
+	}
 	public Double getSaldo() {
 		return saldo;
 	

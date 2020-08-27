@@ -7,12 +7,13 @@ public class ContaCorrente extends Conta{
 		super();
 	}
 	
-	public ContaCorrente(Double limiteChequeEspecial) {
-		super();
+	public ContaCorrente(Double saldo, Double limiteChequeEspecial) {
+		super(saldo);
 		this.limiteChequeEspecial = limiteChequeEspecial;
 	}
-	
-	
+
+
+
 
 	public Double getLimiteChequeEspecial() {
 		return limiteChequeEspecial;

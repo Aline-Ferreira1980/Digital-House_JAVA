@@ -3,8 +3,8 @@ package conta;
 public class Cliente {
 	private Integer id;
 	private String sobrenome;
-	private String rg;
-	private String cpf;
+	private Integer rg;
+	private Integer cpf;
 	public Conta conta;
 	
 	
@@ -12,10 +12,7 @@ public class Cliente {
 		
 	}
 
-
-	
-
-	public Cliente(Integer id, String sobrenome, String rg, String cpf, Conta conta) {
+	public Cliente(Integer id, String sobrenome, Integer rg, Integer cpf, Conta conta) {
 		this.id = id;
 		this.sobrenome = sobrenome;
 		this.rg = rg;
@@ -44,22 +41,22 @@ public class Cliente {
 	}
 
 
-	public String getRg() {
+	public Integer getRg() {
 		return rg;
 	}
 
 
-	public void setRg(String rg) {
+	public void setRg(Integer rg) {
 		this.rg = rg;
 	}
 
 
-	public String getCpf() {
+	public Integer getCpf() {
 		return cpf;
 	}
 
 
-	public void setCpf(String cpf) {
+	public void setCpf(Integer cpf) {
 		this.cpf = cpf;
 	}
 	
@@ -70,8 +67,6 @@ public class Cliente {
 	public void setConta(Conta conta) {
 		this.conta = conta;
 	}
-
-
 
 
 	@Override

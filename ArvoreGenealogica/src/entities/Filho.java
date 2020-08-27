@@ -50,4 +50,10 @@ public class Filho {
 		}
 		return false;
 	}
+	public Object temOMesmoPai(Object filho1, Object filho2) {
+		if (filho1.equals(filho2)) {
+			return ("Filhos tem o mesmo pai");
+		}
+		return filho1;
+	}
 }

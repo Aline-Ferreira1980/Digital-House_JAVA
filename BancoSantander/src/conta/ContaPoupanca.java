@@ -1,16 +1,18 @@
 package conta;
 
 public class ContaPoupanca extends Conta{
-	protected Double juros = 0.12;
+	protected Double juros;
 
 	public ContaPoupanca() {
 		super();
 	}
-	
-	public ContaPoupanca(Double juros) {
-		super();
+
+	public ContaPoupanca(Double saldo2, Double juros) {
+		super(saldo2);
 		this.juros = juros;
 	}
+
+
 
 	public Double getJuros() {
 		return juros;
