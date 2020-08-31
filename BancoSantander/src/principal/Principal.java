@@ -73,7 +73,7 @@ public class Principal {
 		}
 		
 		}while (true);
-		
+		 
 		sc.nextLine();
 	}
 }
