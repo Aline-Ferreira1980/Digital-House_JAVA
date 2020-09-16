@@ -13,15 +13,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.digitalhouse.model.Agenda;
-import br.com.digitalhouse.repository.AgendaRepository;
+import br.com.digitalhouse.exercicio.model.Contato;
+import br.com.digitalhouse.exercicio.repository.ContatoRepository;
 
 @CrossOrigin
 @RestController
-@RequestMapping 
-public class AgendaController {
+@RequestMapping
+public class ContatoController {
+
 	@Autowired
-	private AgendaRepository repository;
+	private ContatoRepository repository;
 	
 	//POST - insert
 	//PUT - Update
@@ -29,18 +30,18 @@ public class AgendaController {
 	//Delete - Delete
 	
 	@GetMapping
-	public List<Agenda> listar(){
+	public List<Contato> listar(){
 		return repository.findAll();
 	}
 	
 	@GetMapping("/{id}")
-	public Agenda buscar(@PathVariable Long id) {
+	public Contato buscar(@PathVariable Long id) {
 		return repository.findById(id).orElse(null);
 	}
 	
 	@PostMapping
-	public void salvar(@RequestBody Agenda agenda) {
-		repository.save(agenda);
+	public void salvar(@RequestBody Contato contact) {
+		repository.save(contact);
 	}
 	
 	@DeleteMapping("/{id}")
@@ -50,12 +51,15 @@ public class AgendaController {
 	}
 	
 	@PutMapping("/{id}")
-	public void atualizar(@PathVariable Long id, @RequestBody Agenda agenda) {
-		Agenda ag = repository.findById(id).get();
+	public void atualizar(@PathVariable Long id, @RequestBody Contato contact) {
+		contact = repository.findById(id).get();
 		
-		ag.setNome(agenda.getNome());
-		ag.setTelefone(agenda.getTelefone());
+		contact.setNome(contact.getNome());
+		contact.setSobrenome(contact.getSobrenome());
+		contact.setDataNasc(contact.getDataNasc());
+		contact.setEndereco(contact.getEndereco());
+		contact.setEmail(contact.getEmail());
 		
-		repository.save(ag);
-	}
+		repository.save(contact);
+}
 }
