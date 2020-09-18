@@ -1,7 +1,5 @@
 package br.com.digitalhouse.exercicio.model;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,9 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "contato")
-public class Contato {
+public class Cliente {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,29 +24,39 @@ public class Contato {
 	@Column
 	private String sobrenome;
 	
+	@DateTimeFormat(pattern="yyyy-mm-dd")
 	@Column(name= "data_nasc")
 	private String dataNasc;
 	
 	@Column
-	private String endereco;
+	private String cpf;
 	
 	@Column
 	private String email;
 	
-	public Contato() {
+	@Column
+	private String rg;
+	
+	@Column
+	private String telefone;
+	
+	public Cliente() {
 		
-	}
+	}  
 	
 	
 
-	public Contato(Long id, String nome, String sobrenome, String dataNasc, String endereco, String email) {
-		
+	public Cliente(Long id, String nome, String sobrenome, String dataNasc, String cpf, String email, String rg,
+			String telefone) {
+	
 		this.id = id;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.dataNasc = dataNasc;
-		this.endereco = endereco;
+		this.cpf = cpf;
 		this.email = email;
+		this.rg = rg;
+		this.telefone = telefone;
 	}
 
 
@@ -85,16 +95,42 @@ public class Contato {
 	public void setDataNasc(String dataNasc) {
 		this.dataNasc = dataNasc;
 	}
-
-
-
-	public String getEndereco() {
-		return endereco;
+	
+	public String getCpf() {
+		return cpf;
 	}
 
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
+
+
+
+	public String getRg() {
+		return rg;
+	}
+
+
+
+	public void setRg(String rg) {
+		this.rg = rg;
+	}
+
+
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+
 
 	public String getEmail() {
 		return email;
@@ -108,12 +144,10 @@ public class Contato {
 
 	@Override
 	public String toString() {
-		return "Contato [id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", dataNasc=" + dataNasc
-				+ ", endereco=" + endereco + ", email=" + email + "]";
+		return "Cliente [id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", dataNasc=" + dataNasc + ", cpf="
+				+ cpf + ", email=" + email + ", rg=" + rg + ", telefone=" + telefone + "]";
 	}
 
-	
-	
 	
 	
 	

@@ -13,16 +13,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.digitalhouse.exercicio.model.Contato;
-import br.com.digitalhouse.exercicio.repository.ContatoRepository;
+import br.com.digitalhouse.exercicio.model.Cliente;
+import br.com.digitalhouse.exercicio.repository.ClienteRepository;
 
 @CrossOrigin
 @RestController
-@RequestMapping
-public class ContatoController {
+@RequestMapping ("/cliente")
+public class ClienteController {
 
 	@Autowired
-	private ContatoRepository repository;
+	private ClienteRepository repository;
 	
 	//POST - insert
 	//PUT - Update
@@ -30,17 +30,17 @@ public class ContatoController {
 	//Delete - Delete
 	
 	@GetMapping
-	public List<Contato> listar(){
+	public List<Cliente> listar(){
 		return repository.findAll();
 	}
 	
 	@GetMapping("/{id}")
-	public Contato buscar(@PathVariable Long id) {
+	public Cliente buscar(@PathVariable Long id) {
 		return repository.findById(id).orElse(null);
 	}
 	
 	@PostMapping
-	public void salvar(@RequestBody Contato contact) {
+	public void adicionar(@RequestBody Cliente contact) {
 		repository.save(contact);
 	}
 	
@@ -51,14 +51,17 @@ public class ContatoController {
 	}
 	
 	@PutMapping("/{id}")
-	public void atualizar(@PathVariable Long id, @RequestBody Contato contact) {
+	public void atualizar(@PathVariable Long id, @RequestBody Cliente contact) {
 		contact = repository.findById(id).get();
 		
 		contact.setNome(contact.getNome());
 		contact.setSobrenome(contact.getSobrenome());
 		contact.setDataNasc(contact.getDataNasc());
-		contact.setEndereco(contact.getEndereco());
+		contact.setCpf(contact.getCpf());
+		contact.setRg(contact.getRg());
 		contact.setEmail(contact.getEmail());
+		contact.setTelefone(contact.getTelefone());
+		
 		
 		repository.save(contact);
 }
