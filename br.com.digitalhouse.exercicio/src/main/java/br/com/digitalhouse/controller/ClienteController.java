@@ -1,6 +1,7 @@
 package br.com.digitalhouse.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,7 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.digitalhouse.exercicio.model.Cliente;
-import br.com.digitalhouse.exercicio.repository.ClienteRepository;
+import br.com.digitalhouse.exercicio.model.Telefone;
+import br.com.digitalhouse.service.ClienteService;
 
 @CrossOrigin
 @RestController
@@ -22,47 +24,47 @@ import br.com.digitalhouse.exercicio.repository.ClienteRepository;
 public class ClienteController {
 
 	@Autowired
-	private ClienteRepository repository;
+	private ClienteService service;
 	
 	//POST - insert
 	//PUT - Update
 	//GET - select
 	//Delete - Delete
 	
+	@PostMapping
+	public void salvar(@RequestBody Cliente cliente) {
+		service.salvar(cliente);
+	}
+	
 	@GetMapping
 	public List<Cliente> listar(){
-		return repository.findAll();
+		return service.listar();
 	}
 	
 	@GetMapping("/{id}")
-	public Cliente buscar(@PathVariable Long id) {
-		return repository.findById(id).orElse(null);
+	public Optional<Cliente> buscar(@PathVariable Long id) {
+		return service.buscar(id);
 	}
 	
-	@PostMapping
-	public void adicionar(@RequestBody Cliente contact) {
-		repository.save(contact);
+//	@GetMapping("/sobrenome/{sobrenome}")
+//	public List<Cliente> returnar(@PathVariable String sobrenome) {
+//		
+//	}
+//	
+	
+	@GetMapping("/{id}/telefones")
+	public List<Telefone> buscarTelefones(@PathVariable Long id) {
+		return service.buscarTelefones(id);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable Long id) {
-		
-		repository.deleteById(id);
+	public void excluir(@PathVariable Long id) {
+		service.excluir(id);
 	}
 	
 	@PutMapping("/{id}")
-	public void atualizar(@PathVariable Long id, @RequestBody Cliente contact) {
-		contact = repository.findById(id).get();
+	public void atualizar(@PathVariable Long id, @RequestBody Cliente cliente) {
+	service.atualizar(cliente, id);
 		
-		contact.setNome(contact.getNome());
-		contact.setSobrenome(contact.getSobrenome());
-		contact.setDataNasc(contact.getDataNasc());
-		contact.setCpf(contact.getCpf());
-		contact.setRg(contact.getRg());
-		contact.setEmail(contact.getEmail());
-		contact.setTelefone(contact.getTelefone());
-		
-		
-		repository.save(contact);
 }
 }
