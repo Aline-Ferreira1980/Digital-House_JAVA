@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.digitalhouse.exercicio.model.Cliente;
-import br.com.digitalhouse.exercicio.model.Telefone;
+import br.com.digitalhouse.model.Cliente;
+import br.com.digitalhouse.model.Telefone;
 import br.com.digitalhouse.service.ClienteService;
 
 @CrossOrigin

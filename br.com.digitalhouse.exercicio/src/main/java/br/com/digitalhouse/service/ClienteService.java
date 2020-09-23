@@ -8,26 +8,31 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.digitalhouse.exercicio.model.Cliente;
-import br.com.digitalhouse.exercicio.model.Telefone;
-import br.com.digitalhouse.exercicio.repository.ClienteRepository;
+import br.com.digitalhouse.model.Cliente;
+import br.com.digitalhouse.model.Telefone;
+import br.com.digitalhouse.repository.CidadeRepository;
+import br.com.digitalhouse.repository.ClienteRepository;
+import br.com.digitalhouse.repository.EstadoRepository;
 
 @Service
 public class ClienteService {
 
 	@Autowired
 	private ClienteRepository repository;
+	@Autowired
+	private CidadeRepository cidadeRepository;
+	@Autowired
+	private EstadoRepository estadoRepository;
 	
 	@Transactional
 	public void salvar(Cliente cliente) {
+		
+		estadoRepository.save(cliente.getEndereco().getCidade().getEstado());
+		cidadeRepository.save(cliente.getEndereco().getCidade());
+		
 		cliente.getTelefone().stream().
 		forEach (telefone -> telefone.setCliente(cliente));
-		
-		//for(Telefone t : cliente.getTelefone())
-//			
-//				t.setCliente(cliente);
-//			}
-	
+
 		repository.save(cliente);
 	}
 
@@ -73,3 +78,10 @@ public class ClienteService {
 	}
 	
 }
+
+
+//for(Telefone t : cliente.getTelefone())
+//	
+//		t.setCliente(cliente);
+//	}
+
