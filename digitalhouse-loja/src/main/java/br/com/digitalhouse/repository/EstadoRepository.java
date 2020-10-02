@@ -12,7 +12,6 @@ import br.com.digitalhouse.model.Estado;
 @Repository
 public interface EstadoRepository extends JpaRepository<Estado, Long> {
 
-
 	@Query("from Cidade where estado.id = :id")
 	List<Cidade> buscarCidades(Long id);
 
