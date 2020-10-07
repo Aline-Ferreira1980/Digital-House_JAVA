@@ -2,6 +2,7 @@ package br.com.digitalhouse.request;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -13,15 +14,17 @@ import lombok.Data;
 @Data
 public class ClienteRequest {
 
+
 	private Long id;
-	private String nome;
-	private String sobrenome;
-	private List<Telefone>	telefones;
+	private String nome;	
+	private String sobrenome;		
+	private List<Telefone> telefones;
 	@NotNull
-	private String cpf;
+	private String cpf;		
 	@NotBlank
-	private String rg;
+	private String rg;	
 	@Email
 	private String email;
 	private Endereco endereco;
+	private String foto;
 }

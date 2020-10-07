@@ -52,4 +52,7 @@ public class Cliente {
 	@Embedded
 	private Endereco endereco;
 	
+	@Column
+	private String foto;
+	
 }

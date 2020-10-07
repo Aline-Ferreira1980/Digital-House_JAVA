@@ -2,6 +2,8 @@ package br.com.digitalhouse.dto;
 
 import java.util.List;
 
+import javax.persistence.Column;
+
 import br.com.digitalhouse.model.Endereco;
 import br.com.digitalhouse.model.Telefone;
 import lombok.Data;
@@ -17,4 +19,5 @@ public class ClienteDTO {
 	private String rg;
 	private String email;
 	private Endereco endereco;
+	private String foto;
 }

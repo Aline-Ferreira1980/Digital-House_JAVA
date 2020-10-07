@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.digitalhouse.dto.ClienteDTO;
+import br.com.digitalhouse.dto.ClienteResumoDTO;
 import br.com.digitalhouse.model.Cliente;
 import br.com.digitalhouse.model.Telefone;
 import br.com.digitalhouse.request.ClienteRequest;
@@ -34,18 +35,24 @@ public class ClienteController {
 	private ClienteService service;
 	
 	@PostMapping
-	public ResponseEntity<?> salvar(@RequestBody @Valid ClienteRequest request) {	
+	public ResponseEntity<?> salvar(@RequestBody @Valid ClienteRequest clienteRequest) {	
 		try {
-			ClienteDTO cliente = service.salvar(request);
-			return ResponseEntity.status(HttpStatus.CREATED).body(cliente);
+			
+			ClienteDTO clienteDTO = service.salvar(clienteRequest);			
+			return ResponseEntity.status(HttpStatus.CREATED).body(clienteDTO);
+		
 		}catch(Exception ex) {
 			return ResponseEntity.badRequest().body(ex.getMessage());
 		}		
 	}
 	
+	@GetMapping("/resumo")
+	public List<ClienteResumoDTO> listarResumo(){
+		return service.listarResumo();
+	}
 	
 	@GetMapping
-	public List<Cliente> listar(){
+	public List<ClienteDTO> listar(){
 		return service.listar();
 	}
 //	
