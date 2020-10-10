@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.digitalhouse.dto.ClienteDTO;
 import br.com.digitalhouse.dto.ClienteResumoDTO;
-import br.com.digitalhouse.exception.ClienteNaoEncontradodException;
+import br.com.digitalhouse.exception.ClienteNaoEncontradoException;
 import br.com.digitalhouse.mapper.ClienteMapper;
 import br.com.digitalhouse.model.Cliente;
 import br.com.digitalhouse.model.Telefone;
@@ -72,7 +72,7 @@ public class ClienteService {
 			repository.flush();
 		
 		} catch (EmptyResultDataAccessException e) {
-			throw new ClienteNaoEncontradodException(id);
+			throw new ClienteNaoEncontradoException(id);
 		};			
 	}
 

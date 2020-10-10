@@ -2,7 +2,6 @@ package br.com.digitalhouse.request;
 
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

@@ -1,6 +1,7 @@
 package br.com.digitalhouse.dto;
 
 import br.com.digitalhouse.model.Endereco;
+import br.com.digitalhouse.model.Imagem;
 import lombok.Data;
 
 @Data
@@ -11,5 +12,6 @@ public class ClienteResumoDTO {
 	private String sobrenome;
 	private String email;
 	private Endereco endereco;
+	private Imagem imagem;
 	
 	}

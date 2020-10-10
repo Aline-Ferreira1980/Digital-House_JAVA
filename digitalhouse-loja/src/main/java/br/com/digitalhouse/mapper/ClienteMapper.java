@@ -14,17 +14,17 @@ import br.com.digitalhouse.request.ClienteRequest;
 public class ClienteMapper {
 
 	@Autowired
-	private ModelMapper modelMapper;
-	
-	 public Cliente requestToModel(ClienteRequest clienteRequest) {
-	        return modelMapper.map(clienteRequest, Cliente.class);
-	    }
-	    
-	    public ClienteDTO modelToDTO(Cliente cliente) {
-	        return modelMapper.map(cliente, ClienteDTO.class);
-	    }
-	    
-	    public ClienteResumoDTO modelToDtoResumo(Cliente cliente) {
-	        return modelMapper.map(cliente, ClienteResumoDTO.class);
-	    }
-	}
+    private ModelMapper modelMapper;
+
+    public Cliente requestToModel(ClienteRequest clienteRequest) {
+        return modelMapper.map(clienteRequest, Cliente.class);
+    }
+    
+    public ClienteDTO modelToDTO(Cliente cliente) {
+        return modelMapper.map(cliente, ClienteDTO.class);
+    }
+    
+    public ClienteResumoDTO modelToDtoResumo(Cliente cliente) {
+        return modelMapper.map(cliente, ClienteResumoDTO.class);
+    }
+}

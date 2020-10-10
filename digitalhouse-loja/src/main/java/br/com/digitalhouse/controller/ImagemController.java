@@ -1,35 +1,46 @@
 package br.com.digitalhouse.controller;
 
-import java.nio.file.Path;
-import java.util.UUID;
+import java.util.List;
 
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
-@RestController
-@RequestMapping("/imagem")
-public class ImagemController {
-	
-	@PostMapping
-	public String salvarFoto(@RequestParam MultipartFile imagem) {
+import br.com.digitalhouse.dto.ImagemDTO;
+import br.com.digitalhouse.request.ImagemRequest;
+import br.com.digitalhouse.service.ImagemService;	
+	@CrossOrigin
+	@RestController
+	@RequestMapping("/imagem")
+	public class ImagemController {
+		@Autowired
+		private ImagemService service;
 		
-		String nomeArquivo = UUID.randomUUID().toString()
-				+ "_" + imagem.getOriginalFilename();
-		
-		Path arquivoFoto = Path.of("C:/fotos", nomeArquivo);
-		
-		System.out.println(arquivoFoto);
-		System.out.println(imagem.getContentType());
-		
-		try {
-			imagem.transferTo(arquivoFoto);
-		} catch (Exception e) {
-			throw new RuntimeException(e);
+		@GetMapping
+		public List<ImagemDTO> listar(){
+			return service.listar();
 		}
 		
-		return arquivoFoto.toString();
+		@PostMapping
+		public ImagemDTO salvarFoto(@Valid ImagemRequest imagem) {
+			
+			return service.salvar(imagem);
+		}
+		@DeleteMapping ("/{id}")
+		public ResponseEntity<ImagemDTO> excluir (@PathVariable Long id){
+			try {
+				service.excluir(id);
+				return ResponseEntity.noContent().build();
+			}catch (Exception e) {
+				return ResponseEntity.notFound().build();
+			}
+		}
 	}
-}
