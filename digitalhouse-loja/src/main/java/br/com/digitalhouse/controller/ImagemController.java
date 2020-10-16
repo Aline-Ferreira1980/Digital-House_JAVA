@@ -14,26 +14,31 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.digitalhouse.controller.openapi.ImagemControllerOpenApi;
 import br.com.digitalhouse.dto.ImagemDTO;
 import br.com.digitalhouse.request.ImagemRequest;
 import br.com.digitalhouse.service.ImagemService;	
 	@CrossOrigin
 	@RestController
 	@RequestMapping("/imagem")
-	public class ImagemController {
+	public class ImagemController implements ImagemControllerOpenApi {
 		@Autowired
 		private ImagemService service;
 		
+		@Override
 		@GetMapping
 		public List<ImagemDTO> listar(){
 			return service.listar();
 		}
 		
+		@Override
 		@PostMapping
 		public ImagemDTO salvarFoto(@Valid ImagemRequest imagem) {
 			
 			return service.salvar(imagem);
 		}
+		
+		@Override
 		@DeleteMapping ("/{id}")
 		public ResponseEntity<ImagemDTO> excluir (@PathVariable Long id){
 			try {
