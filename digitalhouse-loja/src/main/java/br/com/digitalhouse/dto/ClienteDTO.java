@@ -21,9 +21,7 @@ public class ClienteDTO {
 }
 
 
-//region=us-east-2#
-//digitalhouse-user   ==chave  U8mj3SZUjTV8m4aFxoUiTz+NAuIfKYbjp5jlrtB9
-					// id: AKIAR6227XAK4G4BP7CX	
+	
 //acessar o IAM via busca.
 //fazer pasta do aws:
 //	Usuarios
