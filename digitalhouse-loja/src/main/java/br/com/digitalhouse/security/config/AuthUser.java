@@ -1,11 +1,11 @@
-package br.com.digitalhouse.config;
+package br.com.digitalhouse.security.config;
 
 import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
-import br.com.digitalhouse.domain.Usuario;
+import br.com.digitalhouse.model.Usuario;
 import lombok.Getter;
 
 @Getter

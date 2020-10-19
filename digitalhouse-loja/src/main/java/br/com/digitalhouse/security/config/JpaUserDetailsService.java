@@ -1,4 +1,4 @@
-package br.com.digitalhouse.config;
+package br.com.digitalhouse.security.config;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -12,8 +12,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.digitalhouse.domain.Usuario;
-import br.com.digitalhouse.domain.UsuarioRepository;
+import br.com.digitalhouse.model.Usuario;
+import br.com.digitalhouse.repository.UsuarioRepository;
 
 @Service
 public class JpaUserDetailsService implements UserDetailsService {

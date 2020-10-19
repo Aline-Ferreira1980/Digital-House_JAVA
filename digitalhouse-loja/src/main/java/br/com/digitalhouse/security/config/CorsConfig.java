@@ -1,4 +1,4 @@
-package br.com.digitalhouse.config;
+package br.com.digitalhouse.security.config;
 
 import java.util.Collections;
 
@@ -14,7 +14,7 @@ import org.springframework.web.filter.CorsFilter;
 public class CorsConfig {
 
 	@Bean
-	public FilterRegistrationBean<CorsFilter> corsFilter() {
+	public FilterRegistrationBean<CorsFilter> corsFilterBean() {
 		CorsConfiguration config = new CorsConfiguration();
 		config.setAllowCredentials(true);
 		config.setAllowedOrigins(Collections.singletonList("*"));

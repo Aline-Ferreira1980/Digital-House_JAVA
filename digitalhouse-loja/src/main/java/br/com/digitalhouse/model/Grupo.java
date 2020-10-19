@@ -1,4 +1,4 @@
-package br.com.digitalhouse.domain;
+package br.com.digitalhouse.model;
 
 import java.util.HashSet;
 import java.util.Set;

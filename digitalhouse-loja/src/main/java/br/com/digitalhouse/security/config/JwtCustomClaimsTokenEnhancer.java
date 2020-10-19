@@ -1,4 +1,4 @@
-package br.com.digitalhouse.config;
+package br.com.digitalhouse.security.config;
 
 import java.util.HashMap;
 
