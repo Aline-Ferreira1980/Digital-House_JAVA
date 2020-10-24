@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.digitalhouse.dto.ClienteDTO;
 import br.com.digitalhouse.dto.ClienteResumoDTO;
-import br.com.digitalhouse.exception.ClienteNaoEncontradoException;
+import br.com.digitalhouse.exception.ClienteNaoEncontradodException;
 import br.com.digitalhouse.mapper.ClienteMapper;
 import br.com.digitalhouse.model.Cliente;
 import br.com.digitalhouse.model.Telefone;
@@ -21,6 +21,8 @@ import br.com.digitalhouse.repository.CidadeRepository;
 import br.com.digitalhouse.repository.ClienteRepository;
 import br.com.digitalhouse.repository.EstadoRepository;
 import br.com.digitalhouse.request.ClienteRequest;
+
+
 
 @Service
 public class ClienteService {
@@ -39,7 +41,7 @@ public class ClienteService {
 		
 		Cliente cliente = mapper.requestToModel(clienteRequest);
 		cliente.setDataNasc(LocalDate.now());
-		
+				
 		if(cliente.getEndereco().getCidade().getId() == null) {
 			estadoRepository.save(cliente.getEndereco().getCidade().getEstado());
 		    cidadeRepository.save(cliente.getEndereco().getCidade());
@@ -72,7 +74,7 @@ public class ClienteService {
 			repository.flush();
 		
 		} catch (EmptyResultDataAccessException e) {
-			throw new ClienteNaoEncontradoException(id);
+			throw new ClienteNaoEncontradodException(id);
 		};			
 	}
 
@@ -98,4 +100,5 @@ public class ClienteService {
 				.collect(Collectors.toList());
 
 	}
+	
 }

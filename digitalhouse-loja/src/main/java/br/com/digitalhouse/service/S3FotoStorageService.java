@@ -14,6 +14,7 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 
 import br.com.digitalhouse.exception.StorageException;
 import br.com.digitalhouse.storage.config.StorageProperties;
+
 @Service
 public class S3FotoStorageService {
 
@@ -35,7 +36,7 @@ public class S3FotoStorageService {
 					caminhoArquivo,
 					arquivo.getInputStream(),
 					objectMetadata)
-				.withCannedAcl(CannedAccessControlList.PublicRead);
+					.withCannedAcl(CannedAccessControlList.PublicRead);
 			
 			amazonS3.putObject(putObjectRequest);
 			
@@ -45,6 +46,7 @@ public class S3FotoStorageService {
 			throw new StorageException("Não foi possível enviar arquivo para Amazon S3.", e);
 		}				
 	}
+
 	private String getCaminhoArquivo(String nomeArquivo) {
 		return String.format("%s/%s", storageProperties.getFotos(), nomeArquivo);
 	}
@@ -52,11 +54,14 @@ public class S3FotoStorageService {
 	public void remover(String nomeArquivo) {
 		try {
 			String caminhoArquivo = getCaminhoArquivo(nomeArquivo);
+
 			DeleteObjectRequest deleteObjectRequest = new DeleteObjectRequest(
 					storageProperties.getBucket(), caminhoArquivo);
+
 			amazonS3.deleteObject(deleteObjectRequest);
 		} catch (Exception e) {
 			throw new StorageException("Não foi possível excluir arquivo na Amazon S3.", e);
 		}
 	}
+
 }

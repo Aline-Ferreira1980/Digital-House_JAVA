@@ -13,13 +13,12 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "fotos")
+@Table(name="fotos")
 public class Imagem {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
 	@Column
 	private String nomeArquivo;
 	@Column
@@ -30,5 +29,4 @@ public class Imagem {
 	private Long tamanho;
 	@Column
 	private URL url;
-	
 }

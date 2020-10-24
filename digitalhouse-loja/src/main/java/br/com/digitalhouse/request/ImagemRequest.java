@@ -9,8 +9,9 @@ import lombok.Data;
 
 @Data
 public class ImagemRequest {
-	
+
 	@NotNull
-	@FileSize(max="1000KB")
+	@FileSize(max = "5000KB")
 	private MultipartFile imagem;
+
 }

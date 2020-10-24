@@ -35,18 +35,17 @@ public class Cliente {
 	
 	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
 	private List<Telefone> telefones;
-		
+	
 	@DateTimeFormat(pattern="yyyy-mm-dd")
 	@Column(name="data_nasc")
 	private LocalDate dataNasc;		
-		
 	
 	@Column
-	private String cpf;	
-	
+	private String cpf;		
+
 	@Column
 	private String rg;	
-	
+
 	@Column
 	private String email;
 	

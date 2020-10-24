@@ -7,6 +7,7 @@ import java.net.URL;
 import java.net.URLStreamHandler;
 import java.util.Arrays;
 import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 import com.fasterxml.classmate.TypeResolver;
+
 import br.com.digitalhouse.exception.config.Problem;
 import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -43,6 +46,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @Import(BeanValidatorPluginsConfiguration.class)
 public class SwaggerConfig implements WebMvcConfigurer {
+
 	@Bean
 	public Docket apiDocket() {
 		TypeResolver typeResolver = new TypeResolver();
@@ -155,7 +159,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
 				.title("Digital House - Loja API")
 				.description("API para o Sistema de Loja da Digital House")
 				.version("1.0")
-				.contact(new 	Contact("Digital House", "https://www.digitalhouse.com", "contato@digitalhouse.com.br"))
+				.contact(new Contact("Digital House", "https://www.digitalhouse.com", "contato@digitalhouse.com.br"))
 				.build();
 	}
 	

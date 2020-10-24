@@ -10,6 +10,7 @@ import br.com.digitalhouse.request.ImagemRequest;
 
 @Component
 public class ImagemMapper {
+
 	@Autowired
 	private ModelMapper modelMapper;
 

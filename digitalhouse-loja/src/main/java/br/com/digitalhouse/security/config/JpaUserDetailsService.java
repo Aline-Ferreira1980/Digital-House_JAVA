@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.digitalhouse.model.Usuario;
 import br.com.digitalhouse.repository.UsuarioRepository;
 
+
 @Service
 public class JpaUserDetailsService implements UserDetailsService {
 
