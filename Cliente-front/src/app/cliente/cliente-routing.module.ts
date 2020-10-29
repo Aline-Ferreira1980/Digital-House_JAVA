@@ -6,8 +6,10 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   { path: 'cliente', component: ClienteComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['DH01'] } 
-  }
+    data: { roles: ['DH01','DH02'] } 
+  },
+  { path: 'cliente/:codigo', component: ClienteComponent },
+  // { path: 'listar/cliente',component: ClienteTableComponent}
 ];
 
 @NgModule({

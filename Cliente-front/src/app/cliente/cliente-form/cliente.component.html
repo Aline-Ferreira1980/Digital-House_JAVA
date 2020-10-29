@@ -1,7 +1,7 @@
 <div class="container mt-5 mb-5 pt-5" style="position: relative;">
-
     <form [formGroup]="formulario" (ngSubmit)="cadastrar()">
         <div class="form-row">
+            <input type="hidden" formControlName="id"/>
             <div class="form-group col-md-6">
                 <label for="nome">Nome</label>
                 <input id="nome" type="text" class="form-control" formControlName="nome" />
@@ -30,7 +30,6 @@
                     Sobrenome excedeu a quantidade máxima de 10 caracteres!
                 </div>
             </div>
-            
         </div>
         <div class="form-group" >
             <label for="nome">Foto</label>
@@ -106,6 +105,7 @@
             <div class="form-group col-md-6">
                 <label for="">Cidade</label>
                 <p-dropdown 
+                    [disabled]="!formulario.value.estado"
                     [options]="cidades" 
                     formControlName="cidade" 
                     [filter]="true" 
@@ -116,5 +116,7 @@
         <button type="submit" class="btn"
             [class]="operacao ? 'btn-primary' : 'btn-success'">{{ operacao ? "Cadastrar" : "Atualizar" }}
         </button>
+        <br><br>
+        <a routerLink="/listar/cliente">Voltar para a pesquisa</a>
     </form>
 </div>

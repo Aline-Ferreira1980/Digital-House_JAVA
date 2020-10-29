@@ -2,7 +2,7 @@ import { MessageService } from 'primeng/api';
 import { TemplateModule } from './template/template.module';
 import { SegurancaModule } from './seguranca/seguranca.module';
 import { ClienteModule } from './cliente/cliente.module';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import {ToastModule} from 'primeng/toast';
@@ -23,7 +23,8 @@ import { AppComponent } from './app.component';
     ToastModule    
   ],
   providers: [
-    MessageService    
+    MessageService,
+    Title    
   ],
   bootstrap: [AppComponent]
 })
